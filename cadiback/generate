@@ -1,0 +1,16 @@
+#!/bin/sh
+die () {
+  echo "generate: error: $*" 1>&2
+  exit 1
+}
+# [ -f VERSION ] || die "could not find 'VERSION' file"
+# [ -d .git ] || die "could not find '.git' directory"
+# [ -f makefile ] || die "could not find 'makefile'"
+# VERSION="`cat VERSION`"
+# GITID="`git show|head -1|awk '{print $2}'`"
+# BUILD="`sed '/^COMPILE/!d;s,^COMPILE=,,;s, -I.*,,' makefile`"
+cat <<EOF
+#define VERSION "0.2.1"
+#define GITID "ea65a9442fc2604ee5f4ffd0f0fdd0bf481d5b42"
+#define BUILD "g++ -fPIC -Wall -O3 -std=c++17 -DNDEBUG"
+EOF

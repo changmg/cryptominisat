@@ -20,6 +20,12 @@
 
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
+PROJECT(cryptominisat5)
+
+# add subdirectories
+add_subdirectory(cadical)
+add_subdirectory(cadiback)
+
 message(STATUS "LIB directory is '${CMAKE_INSTALL_LIBDIR}'")
 message(STATUS "BIN directory is '${CMAKE_INSTALL_BINDIR}'")
 
@@ -92,7 +98,6 @@ foreach (build_config ${build_types})
     endforeach()
 endforeach()
 
-PROJECT(cryptominisat5)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
