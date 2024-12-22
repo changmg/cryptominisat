@@ -269,12 +269,12 @@ endif()
 
 # indicate that we depend on pthread, and compile in the actual library
 target_link_libraries(cryptominisat5
-    LINK_PUBLIC ${cryptoms_lib_link_libs}
-    LINK_PUBLIC ${LOUVAIN_COMMUNITIES_LIBRARIES}
-    LINK_PUBLIC ${CMAKE_THREAD_LIBS_INIT}
-    LINK_PUBLIC ${GMP_LIBRARIES}
-    LINK_PUBLIC ${cadiback}
-    LINK_PUBLIC ${cadical}
+    PRIVATE ${cryptoms_lib_link_libs}
+    PRIVATE ${LOUVAIN_COMMUNITIES_LIBRARIES}
+    PRIVATE ${CMAKE_THREAD_LIBS_INIT}
+    PRIVATE ${GMP_LIBRARIES}
+    PRIVATE cadiback_static
+    PRIVATE cadical
 )
 
 if (NOT WIN32)
@@ -421,7 +421,10 @@ set_target_properties(cryptominisat5-bin PROPERTIES
     INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 target_link_libraries(cryptominisat5-bin
-    ${cryptoms_exec_link_libs}
+    PRIVATE ${cryptoms_exec_link_libs}
+    PRIVATE ${GMP_LIBRARIES}
+    PRIVATE cadiback_static
+    PRIVATE cadical
 )
 install(TARGETS cryptominisat5-bin
     # EXPORT ${CRYPTOMINISAT5_EXPORT_NAME}

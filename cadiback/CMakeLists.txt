@@ -5,8 +5,8 @@ project(cadiback LANGUAGES CXX)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -O3 -std=c++17 -DNDEBUG")
 
 # Paths
-set(CADICAL_SRC_DIR ${CMAKE_SOURCE_DIR}/../cadical/src)
-set(CADICAL_BUILD_DIR ${CMAKE_SOURCE_DIR}/../cadical/build)
+set(CADICAL_SRC_DIR ${PROJECT_SOURCE_DIR}/../cadical/src)
+set(CADICAL_BUILD_DIR ${PROJECT_SOURCE_DIR}/../cadical/build)
 
 # Generate the config.hpp file
 add_custom_command(
